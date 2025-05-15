@@ -33,8 +33,12 @@ class CPU{
         }
     }
 
-    void bindRAM(RAM &binding){
+    void bind_RAM(RAM &binding){
         memory = binding;
+    }
+
+    void clock_update(){
+        programm_counter++;
     }
 };
 

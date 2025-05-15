@@ -3,15 +3,25 @@
 
 class RAM{
     private:
+    //255 bytes of memory
     int memory[255];
+    //on kilobyte of program memory on ram
+    int program[1000];
 
     public:
-    void write(unsigned int addres, unsigned int data){
-
+    //write to memory
+    void write(unsigned int adress, unsigned int data){
+        memory[adress] = data;
     }
 
-    int read(unsigned int addres){
-        return 0;
+    //read from memory
+    int read(unsigned int adress){
+        return memory[adress];
+    }
+
+    //add a command
+    void add_command(int line, unsigned int opcode){
+        
     }
 };
 
