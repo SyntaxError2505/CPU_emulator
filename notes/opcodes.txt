@@ -29,4 +29,4 @@ z.b. %4
 
 //constants
 16 #x //x is an integer
-z.b. x69
+z.b. #69

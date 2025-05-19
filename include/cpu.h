@@ -58,10 +58,41 @@ class CPU{
                     program_counter++;
                     value = read(memory, fetch(memory));
                 }
+                else if(fetch(memory) == 16){
+                    program_counter++;
+                    value = fetch(memory);
+                }
 
                 stack[cache] = value;
             }
+
             case 2:
+            int value;
+            int adress;
+
+            program_counter++;
+
+            if(fetch(memory) == 15){
+                program_counter++;
+                adress == fetch(memory);
+                program_counter++;
+
+                if(fetch(memory) == 14){
+                    program_counter++;
+                    value == stack[fetch(memory)];
+                }
+                else if(fetch(memory) == 15){
+                    program_counter++;
+                    value == read(memory, fetch(memory));
+                }
+                else if(fetch(memory) == 16){
+                    program_counter++;
+                    value == fetch(memory);
+                }
+
+                write(memory, adress, value);
+            }
+            
             case 3:
             case 4:
             case 5:
