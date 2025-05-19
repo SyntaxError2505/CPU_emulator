@@ -40,9 +40,12 @@ class CPU{
             case 0:
             //nop
             case 1:
+
             int cache;
             int value;
+
             program_counter++;
+
             if(fetch(memory) == 14){
                 program_counter++;
                 cache = fetch(memory);
@@ -51,6 +54,12 @@ class CPU{
                     program_counter++;
                     value = stack[cache];
                 }
+                else if(fetch(memory) == 15){
+                    program_counter++;
+                    value = read(memory, fetch(memory));
+                }
+
+                stack[cache] = value;
             }
             case 2:
             case 3:
