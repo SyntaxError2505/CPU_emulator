@@ -9,9 +9,7 @@ class CPU{
     unsigned int current_operation = 0;
     unsigned int current_flag = 0;
 
-    int stack_a = 0;
-    int stack_b = 0;
-    int stack_c = 0;
+    int stack[3];
 
     int fetch(RAM& memory){
         return memory.fetch(program_counter);
@@ -27,9 +25,9 @@ class CPU{
 
     public:
     void reset(RAM& memory){
-        stack_a = 0;
-        stack_b = 0;
-        stack_c = 0;
+        stack[0] = 0;
+        stack[1] = 0;
+        stack[2] = 0;
 
         for(int i; i <= 255; i++){
             memory.write(i, 0);
@@ -42,7 +40,18 @@ class CPU{
             case 0:
             //nop
             case 1:
+            int cache;
+            int value;
             program_counter++;
+            if(fetch(memory) == 14){
+                program_counter++;
+                cache = fetch(memory);
+                program_counter++;
+                if(fetch(memory) == 14){
+                    program_counter++;
+                    value = cache[stack[fetch(memory)]];
+                }
+            }
             case 2:
             case 3:
             case 4:
