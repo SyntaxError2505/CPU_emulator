@@ -49,7 +49,7 @@ class CPU{
                 program_counter++;
                 if(fetch(memory) == 14){
                     program_counter++;
-                    value = cache[stack[fetch(memory)]];
+                    value = stack[cache];
                 }
             }
             case 2:
