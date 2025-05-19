@@ -1,0 +1,2 @@
+0: unknown opcode
+1: value not supportet

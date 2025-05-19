@@ -1,0 +1,32 @@
+//Special 
+0 nop //no operations
+
+//Memory Managment
+1 ld &a &x //load to cpu memory
+2 wrt %a &x //write to ram
+
+//Maths (only with cpu memory)
+3 add &x &y &output //add x to y and write to output
+4 sub &x &y &output //subtract y from x and write to output
+5 mul &x &y &output //multiply x and y and write to output
+6 div &x &y &output //divide x trough y, round it and write to output
+
+//every jump (conditions only with cpu memory)
+7 jmp //uncoditional jump
+8 j= &x &y//Jump if Equal
+9 j=! &x &y//Jump if Not Equal
+10 j> &x &y//Jump if Greater
+11 j>= &x &y//Jump if Greater or Equal
+12 j< &x &y//Jump if Less
+13 j<= &x &y//Jump if Less or Equal
+
+//cpu Memory (only as argument) starts with $ (can be replaced by constant)
+14 &a/b/c
+
+//Ram memory (only as argument) starts with % (can be replaced by constant)
+15 %0-254
+z.b. %4
+
+//constants
+16 #x //x is an integer
+z.b. x69
