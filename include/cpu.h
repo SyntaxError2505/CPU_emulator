@@ -7,6 +7,7 @@ class CPU{
     private:
     unsigned int program_counter = 0;
     unsigned int current_operation = 0;
+    unsigned int current_flag = 0;
 
     int stack_a = 0;
     int stack_b = 0;
@@ -35,7 +36,26 @@ class CPU{
         }
     }
 
-    void cycle(){
+    void cycle(RAM& memory){
+        int operation = fetch(memory);
+        switch(operation){
+            case 0:
+            //nop
+            case 1:
+            program_counter++;
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+            case 11:
+            case 12:
+            case 13:
+        }
         program_counter++;
     }
 };
