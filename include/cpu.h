@@ -6,8 +6,6 @@
 class CPU{
     private:
     unsigned int program_counter = 0;
-    unsigned int current_operation = 0;
-    unsigned int current_flag = 0;
 
     int stack[3];
 
@@ -25,28 +23,41 @@ class CPU{
 
     public:
     void reset(RAM& memory){
+        program_counter = 0;
+
         stack[0] = 0;
         stack[1] = 0;
         stack[2] = 0;
 
-        for(int i; i <= 255; i++){
+        for(int i = 0; i <= 255; i++){
             memory.write(i, 0);
         }
+
+        for(int i = 0; i <= 1000; i++){
+            memory.add_command(i, 0);
+        }
+    }
+
+    int get_stack(int adress){
+        return stack[adress];
     }
 
     void cycle(RAM& memory){
         int operation = fetch(memory);
+
         switch(operation){
             case 0:
             //nop
+            break;
+
             case 1:
-
-            int cache;
-            int value;
-
+            //load int stack
             program_counter++;
 
             if(fetch(memory) == 14){
+                int cache;
+                int value;
+
                 program_counter++;
                 cache = fetch(memory);
                 program_counter++;
@@ -65,46 +76,82 @@ class CPU{
 
                 stack[cache] = value;
             }
-
+            break;
             case 2:
-            int value;
-            int adress;
-
+            //write into memory
             program_counter++;
 
             if(fetch(memory) == 15){
+                int adress;
+                int value;
+
                 program_counter++;
-                adress == fetch(memory);
+                adress = fetch(memory);
                 program_counter++;
 
                 if(fetch(memory) == 14){
                     program_counter++;
-                    value == stack[fetch(memory)];
+                    value = stack[fetch(memory)];
                 }
                 else if(fetch(memory) == 15){
                     program_counter++;
-                    value == read(memory, fetch(memory));
+                    value = read(memory, fetch(memory));
                 }
                 else if(fetch(memory) == 16){
                     program_counter++;
-                    value == fetch(memory);
+                    value = fetch(memory);
                 }
 
                 write(memory, adress, value);
             }
+
+            break;
             
             case 3:
+
+            break;
+
             case 4:
+            
+            break;
+
             case 5:
+
+            break;
+
             case 6:
+
+            break;
+
             case 7:
+
+            break;
+
             case 8:
+
+            break;
+
             case 9:
+
+            break;
+
             case 10:
+
+            break;
+
             case 11:
+
+            break;
+
             case 12:
+
+            break;
+
             case 13:
+
+            break;
         }
+
         program_counter++;
     }
 };
