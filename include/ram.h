@@ -21,7 +21,7 @@ class RAM{
 
     //add a command
     void add_command(int line, unsigned int opcode){
-        if(line >= 1000){
+        if(line <= 1000){
             program[line] = opcode;
         }
     }

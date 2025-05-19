@@ -61,6 +61,7 @@ class CPU{
                 program_counter++;
                 cache = fetch(memory);
                 program_counter++;
+                
                 if(fetch(memory) == 14){
                     program_counter++;
                     value = stack[cache];
