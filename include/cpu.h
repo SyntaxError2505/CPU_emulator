@@ -5,40 +5,38 @@
 
 class CPU{
     private:
-    unsigned int programm_counter;
+    unsigned int program_counter = 0;
+    unsigned int current_operation = 0;
 
     int stack_a = 0;
     int stack_b = 0;
     int stack_c = 0;
 
-    RAM memory;
-
-    bool decode(){
-        
+    int fetch(RAM& memory){
+        return memory.fetch(program_counter);
     }
 
-    bool fetch(){
-        
+    int read(RAM& memory, int adress){
+        return memory.read(adress);
+    }
+
+    void write(RAM& memory, int adress, int data){
+        memory.write(adress, data);
     }
 
     public:
-
-    void reset(){
+    void reset(RAM& memory){
         stack_a = 0;
         stack_b = 0;
         stack_c = 0;
 
-        for(int i; i < 255; i++){
+        for(int i; i <= 255; i++){
             memory.write(i, 0);
         }
     }
 
-    void bind_RAM(RAM &binding){
-        memory = binding;
-    }
-
-    void clock_update(){
-        programm_counter++;
+    void cycle(){
+        program_counter++;
     }
 };
 

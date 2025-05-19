@@ -6,7 +6,7 @@ int main(){
     RAM memory;
     CPU processor;
 
-    processor.bindRAM(memory);
-    processor.reset();
+    processor.reset(memory);
+
     return 0;
 }
