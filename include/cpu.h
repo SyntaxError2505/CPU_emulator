@@ -138,14 +138,92 @@ class CPU{
             break;
 
             case 4:
+            if(operation == 3){
+                int value_a;
+                int value_b;
+                int adress;
+
+                program_counter++;
+
+                if(fetch(memory) == 14){
+                    program_counter++;
+                    value_a = stack[fetch(memory)];
+
+                    program_counter++;
+                    if(fetch(memory) == 14){
+                        program_counter++;
+                        value_b = stack[fetch(memory)];
+
+                        program_counter++;
+                        if(fetch(memory) == 14){
+                            program_counter++;
+                            adress = fetch(memory);
+                        }
+                    }
+
+                    stack[adress] = value_a - value_b;
+                }
+            }
             
             break;
 
             case 5:
+            if(operation == 3){
+                int value_a;
+                int value_b;
+                int adress;
+
+                program_counter++;
+
+                if(fetch(memory) == 14){
+                    program_counter++;
+                    value_a = stack[fetch(memory)];
+
+                    program_counter++;
+                    if(fetch(memory) == 14){
+                        program_counter++;
+                        value_b = stack[fetch(memory)];
+
+                        program_counter++;
+                        if(fetch(memory) == 14){
+                            program_counter++;
+                            adress = fetch(memory);
+                        }
+                    }
+
+                    stack[adress] = value_a * value_b;
+                }
+            }
 
             break;
 
             case 6:
+            if(operation == 3){
+                int value_a;
+                int value_b;
+                int adress;
+
+                program_counter++;
+
+                if(fetch(memory) == 14){
+                    program_counter++;
+                    value_a = stack[fetch(memory)];
+
+                    program_counter++;
+                    if(fetch(memory) == 14){
+                        program_counter++;
+                        value_b = stack[fetch(memory)];
+
+                        program_counter++;
+                        if(fetch(memory) == 14){
+                            program_counter++;
+                            adress = fetch(memory);
+                        }
+                    }
+
+                    stack[adress] = value_a / value_b;
+                }
+            }
 
             break;
 

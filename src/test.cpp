@@ -10,8 +10,8 @@ int main(){
     processor.reset(memory);
 
     std::cout << "making program\n";
-    //loads the number 69 (funny) to the cpus internal register a
-    int program[] = {1, 14, 0, 16, 69, 1, 14, 1, 16, 5, 3, 14, 0, 14, 1, 14, 2, 17};
+
+    int program[] = {1, 14, 0, 16, 2, 1, 14, 1, 16, 3, 3, 14, 0, 14, 1, 14, 2, 2, 15, 0, 14, 2, 17};
 
 
     std::cout << "loading program\n";
@@ -27,7 +27,6 @@ int main(){
         quit = processor.cycle(memory);
     }
 
-    std::cout << processor.get_stack(2);
-
+    std::cout << memory.read(0);
     return 0;
 }
