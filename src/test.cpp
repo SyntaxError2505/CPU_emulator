@@ -4,13 +4,14 @@
 int main(){
     CPU processor;
     RAM memory;
+    bool quit = false;
 
     std::cout << "reseting memory\n";
     processor.reset(memory);
 
     std::cout << "making program\n";
     //loads the number 69 (funny) to the cpus internal register a
-    int program[] = {1, 14, 0, 16, 69};
+    int program[] = {1, 14, 0, 16, 69, 1, 14, 1, 16, 5, 3, 14, 0, 14, 1, 14, 2, 17};
 
 
     std::cout << "loading program\n";
@@ -22,13 +23,11 @@ int main(){
     std::cout << "Cycle\n";
    
     //execute the program
-    for(int i = 0; i < 5; i++){
-        std::cout << "cycle started\n";
-        processor.cycle(memory);
-        std::cout << "cycle completed\n";
+    while(!quit){
+        quit = processor.cycle(memory);
     }
 
-    std::cout << processor.get_stack(0);
+    std::cout << processor.get_stack(2);
 
     return 0;
 }

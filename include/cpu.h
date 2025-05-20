@@ -42,7 +42,7 @@ class CPU{
         return stack[adress];
     }
 
-    void cycle(RAM& memory){
+    bool cycle(RAM& memory){
         int operation = fetch(memory);
 
         switch(operation){
@@ -109,7 +109,32 @@ class CPU{
             break;
             
             case 3:
+            if(operation == 3){
+                int value_a;
+                int value_b;
+                int adress;
 
+                program_counter++;
+
+                if(fetch(memory) == 14){
+                    program_counter++;
+                    value_a = stack[fetch(memory)];
+
+                    program_counter++;
+                    if(fetch(memory) == 14){
+                        program_counter++;
+                        value_b = stack[fetch(memory)];
+
+                        program_counter++;
+                        if(fetch(memory) == 14){
+                            program_counter++;
+                            adress = fetch(memory);
+                        }
+                    }
+
+                    stack[adress] = value_a + value_b;
+                }
+            }
             break;
 
             case 4:
@@ -151,9 +176,14 @@ class CPU{
             case 13:
 
             break;
+
+            case 17:
+            return true;
+            break;
         }
 
         program_counter++;
+        return false;
     }
 };
 
