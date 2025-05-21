@@ -12,13 +12,13 @@
 6 div &x &y &output //divide x trough y, round it and write to output
 
 //every jump (conditions only with cpu memory)
-7 jmp //uncoditional jump
-8 j= &x &y//Jump if Equal
-9 j=! &x &y//Jump if Not Equal
-10 j> &x &y//Jump if Greater
-11 j>= &x &y//Jump if Greater or Equal
-12 j< &x &y//Jump if Less
-13 j<= &x &y//Jump if Less or Equal
+7 jmp #l //uncoditional jump
+8 j= &x &y #l //Jump if Equal
+9 j=! &x &y #l //Jump if Not Equal
+10 j> &x &y #l //Jump if Greater
+11 j>= &x &y #l //Jump if Greater or Equal
+12 j< &x &y #l //Jump if Less
+13 j<= &x &y #l //Jump if Less or Equal
 
 //cpu Memory (only as argument) starts with $ (can be replaced by constant)
 14 &a/b/c
