@@ -33,3 +33,6 @@ z.b. #69
 
 //quiting
 17 qt
+
+//writing to console
+18 prt &x

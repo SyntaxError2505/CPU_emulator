@@ -1,6 +1,7 @@
 #ifndef cpuem
 #define cpuem
 
+#include<iostream>
 #include "ram.h"
 
 class CPU{
@@ -229,6 +230,18 @@ class CPU{
 
             case 7:
             
+            if(operation == 7){
+                int line;
+                program_counter++;
+
+                if(fetch(memory) == 16){
+                    program_counter++;
+                    line = fetch(memory);
+                }
+
+                program_counter = line - 1;
+            }
+
             break;
 
             case 8:
@@ -257,6 +270,27 @@ class CPU{
 
             case 17:
             return true;
+            break;
+
+            case 18:
+
+            if(operation == 18){
+                int value;
+                
+                program_counter++;
+                
+                if(fetch(memory) == 14){
+                    program_counter++;
+                    value = stack[fetch(memory)];
+                }
+                else if(fetch(memory) == 16){
+                    program_counter++;
+                    value = fetch(memory);
+                }
+
+                std::cout << value << std::endl;
+            }
+
             break;
         }
 
